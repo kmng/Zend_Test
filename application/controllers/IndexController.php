@@ -11,13 +11,13 @@ class IndexController extends Zend_Controller_Action
     public function indexAction()
     {
         // action body
-		$this->view->assign('title', 'Main Page');
+		$this->view->title =  'Main Page';
 
     }
 	
 	public function aboutAction()
 	{
-		$this->view->assign('title', 'About Me');
+		$this->view->title = 'About Me';
 	}
 
 
