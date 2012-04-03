@@ -1,7 +1,5 @@
 CREATE TABLE places (
-id int(11) NOT NULL auto_increment,
-date_created datetime NOT NULL,
-date_updated datetime NOT NULL,
+id int(11) NOT NULL auto_increment
 name varchar(100) NOT NULL,
 address1 varchar(100) default NULL,
 address2 varchar(100) default NULL,

@@ -12,6 +12,9 @@ class IndexController extends Zend_Controller_Action
     {
         // action body
 		$this->view->title =  'Main Page';
+		$place = new Application_Model_PlaceMapper();
+        $this->view->entries = $place->fetchAll();
+		print_r($place );
 
     }
 	

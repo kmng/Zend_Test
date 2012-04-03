@@ -24,7 +24,47 @@ class Application_Model_PlaceMapper
         }
         return $this->_dbTable;
     }
- 
 
+    public function save(Application_Model_Place $place)
+    {
+    } 
+
+    public function find($id, Application_Model_Place $place)
+    {
+        $result = $this->getDbTable()->find($id);
+        if (0 == count($result)) {
+            return;
+        }
+        $row = $result->current();
+        $place->setId($row->id)
+                  ->setName($row->name)
+                  ->setAddress1($row->address1)
+                  ->setAddress2($row->address2)
+				  ->setAddress3($row->address3)
+				  ->setTown($row->town)
+				  ->setCounty($row->county)
+				  ->setPostcode($row->postcode)
+				  ->setCountry($row->country);
+	}
+	
+	public function fetchAll()
+    {
+        $resultSet = $this->getDbTable()->fetchAll();
+        $entries   = array();
+        foreach ($resultSet as $row) {
+            $entry = new Application_Model_Place();
+            $entry->setId($row->id)
+                  ->setName($row->name)
+                  ->setAddress1($row->address1)
+                  ->setAddress2($row->address2)
+				  ->setAddress3($row->address3)
+				  ->setTown($row->town)
+				  ->setCounty($row->county)
+				  ->setPostcode($row->postcode)
+				  ->setCountry($row->country);
+            $entries[] = $entry;
+        }
+        return $entries;
+	}
 }
 
