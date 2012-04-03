@@ -48,22 +48,10 @@ class Application_Model_PlaceMapper
 	}
 	
 	public function fetchAll()
-    {
-        $resultSet = $this->getDbTable()->fetchAll();
-        $entries   = array();
-        foreach ($resultSet as $row) {
-            $entry = new Application_Model_Place();
-            $entry->setId($row->id)
-                  ->setName($row->name)
-                  ->setAddress1($row->address1)
-                  ->setAddress2($row->address2)
-				  ->setAddress3($row->address3)
-				  ->setTown($row->town)
-				  ->setCounty($row->county)
-				  ->setPostcode($row->postcode)
-				  ->setCountry($row->country);
-            $entries[] = $entry;
-        }
+    	{
+        	$resultSet = $this->getDbTable()->fetchAll();
+        	$entries   = array();
+		print_r($resultSet);
         return $entries;
 	}
 }
