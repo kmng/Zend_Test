@@ -15,7 +15,7 @@ class IndexController extends Zend_Controller_Action
 		$place = new Application_Model_PlaceMapper();
 		$table = new Application_Model_DbTable_Places();
 		$place->setDbTable($table);
-//        print_r($place->fetchAll());
+        print_r($place->fetchAll());
 		print_r($place );
 
     }
