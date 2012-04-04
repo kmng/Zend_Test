@@ -27,6 +27,25 @@ class Application_Model_PlaceMapper
 
     public function save(Application_Model_Place $place)
     {
+     	$data = array(
+            'name'   => $place->getName(),
+            'address1' => $place->getAddress1(),
+            'address2' => $place->getAddress2(),
+            'address3' => $place->getAddress3(),
+     		'town' => $place->getTown(),
+     		'county' => $place->getCounty(),
+     		'postcode' => $place->getPostcode(),
+     		'country' => $place->getCountry()
+     		
+     	
+     	);
+ 
+        if (null === ($id = $place->getId())) {
+            unset($data['id']);
+            $this->getDbTable()->insert($data);
+        } else {
+            $this->getDbTable()->update($data, array('id = ?' => $id));
+        }    	
     } 
 
     public function find($id, Application_Model_Place $place)
@@ -51,10 +70,26 @@ class Application_Model_PlaceMapper
 	
 	public function fetchAll()
     	{
-        	$resultSet = $this->getDbTable()->fetchAll();
+        	$resultSet = $this->getDbTable()->fetchAll();			
         	$entries   = array();
-		print_r($resultSet);
+    	    
+        	foreach ($resultSet as $row) 
+        	{
+            	$entry = new Application_Model_Place();
+            	$entry->setId($row->id)
+                  ->setName($row->name)
+                  ->setAddress1($row->address1)
+                  ->setAddress2($row->address2)
+				  ->setAddress3($row->address3)
+				  ->setTown($row->town)
+				  ->setCounty($row->county)
+				  ->setPostcode($row->postcode)
+				  ->setCountry($row->country);
+            	$entries[] = $entry;
+        	}       
+			
         return $entries;
 	}
 }
 
+?>
