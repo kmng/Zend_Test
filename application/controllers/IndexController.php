@@ -37,6 +37,25 @@ class IndexController extends Zend_Controller_Action
 	}
 
 
+	public function insertAction()
+	{
+        $request = $this->getRequest();
+        $form    = new Application_Form_Placeform();
+
+      	if ($this->getRequest()->isPost()) 
+		{
+            if ($form->isValid($request->getPost())) 
+			{
+                $place = new Application_Model_Place($form->getValues());
+                $placemapper  = new Application_Model_PlaceMapper();
+                $placemapper->save($place);
+                return $this->_helper->redirector('index');
+            }
+        }
+ 
+		$this->view->form = $form;
+
+	}
 }
 
 ?>
