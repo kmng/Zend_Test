@@ -68,36 +68,36 @@ class Application_Model_Place
 
    public function setAddress1($text)
     {
-        $this->_Address1 = (string) $text;
+        $this->_address1 = (string) $text;
         return $this;
     }
  
     public function getAddress1()
     {
-        return $this->_Address1;
+        return $this->_address1;
     }
 
 
    public function setAddress2($text)
     {
-        $this->_Address2 = (string) $text;
+        $this->_address2 = (string) $text;
         return $this;
     }
  
     public function getAddress2()
     {
-        return $this->_Address2;
+        return $this->_address2;
     }
 
    public function setAddress3($text)
     {
-        $this->_Address3 = (string) $text;
+        $this->_address3 = (string) $text;
         return $this;
     }
  
     public function getAddress3()
     {
-        return $this->_Address3;
+        return $this->_address3;
     }
 
 

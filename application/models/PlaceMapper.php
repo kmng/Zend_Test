@@ -32,6 +32,8 @@ class Application_Model_PlaceMapper
     public function find($id, Application_Model_Place $place)
     {
         $result = $this->getDbTable()->find($id);
+		
+		
         if (0 == count($result)) {
             return;
         }
